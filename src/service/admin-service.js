@@ -1,6 +1,9 @@
 import { ResponseError } from '../error/response-error.js';
 import { Admin } from '../models/models.js';
-import { registerAdminValidation } from '../validation/admin-validation.js';
+import {
+  loginAdminValidation,
+  registerAdminValidation,
+} from '../validation/admin-validation.js';
 import { validate } from '../validation/validation.js';
 import bcrypt from 'bcrypt';
 
@@ -24,6 +27,33 @@ const register = async (request) => {
   await newAdmin.save();
 
   return newAdmin;
+};
+
+const login = async (request) => {
+  const loginRequest = validate(loginAdminValidation, request);
+
+  const user = await Admin.findOne({
+    username: loginRequest.username,
+  });
+
+  if (!user) {
+    throw new ResponseError(401, 'username or password wrong');
+  }
+
+  const isPasswordValid = await bcrypt.compare(
+    loginRequest.password,
+    user.password
+  );
+  if (!isPasswordValid) {
+    throw new ResponseError(401, 'Username or password wrong');
+  }
+
+  const token = uuid().toString();
+  return Admin.findOneAndUpdate(
+    { username: user.username },
+    { token: token },
+    { new: true, select: 'token' }
+  );
 };
 
 export default { register };

@@ -37,6 +37,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     maxlengh: 25,
   },
+  role: {
+    type: String,
+    enum: ['admin', 'user'],
+  },
+  token: {
+    type: String,
+  },
 });
 const reportSchema = new mongoose.Schema({
   no: {
