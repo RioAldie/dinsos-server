@@ -123,12 +123,18 @@ const eventSchema = new mongoose.Schema({
     required: true,
   },
   date: {
-    type: Date,
+    type: String,
   },
   location: {
     type: String,
   },
   time: {
+    type: String,
+  },
+  detail: {
+    type: String,
+  },
+  audience: {
     type: String,
   },
 });

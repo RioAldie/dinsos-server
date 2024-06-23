@@ -6,6 +6,7 @@ import {
   getReportValidation,
 } from '../validation/report-validation.js';
 import { validate } from '../validation/validation.js';
+import { ResponseError } from '../error/response-error.js';
 
 const add = async (request) => {
   const report = validate(createReportValidation, request);
