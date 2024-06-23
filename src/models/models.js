@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
     maxlengh: 25,
   },
   age: {
-    type: String,
+    type: Number,
     maxlengh: 25,
   },
   role: {
@@ -46,10 +46,17 @@ const userSchema = new mongoose.Schema({
   },
 });
 const reportSchema = new mongoose.Schema({
-  no: {
-    type: Number,
+  NIK: {
+    type: String,
   },
   name: {
+    type: String,
+    maxlengh: 255,
+  },
+  suspectName: {
+    type: String,
+  },
+  title: {
     type: String,
     maxlengh: 255,
   },
@@ -61,20 +68,32 @@ const reportSchema = new mongoose.Schema({
     type: String,
     maxlengh: 155,
   },
-  date: {
-    type: Date,
+  createAt: {
+    type: String,
   },
   userId: {
     type: mongoose.ObjectId,
     ref: 'User',
   },
-  report: {
+  content: {
     type: String,
   },
   category: {
     type: String,
   },
   status: {
+    type: String,
+  },
+  relation: {
+    type: String,
+  },
+  job: {
+    type: String,
+  },
+  location: {
+    type: String,
+  },
+  email: {
     type: String,
   },
 });
