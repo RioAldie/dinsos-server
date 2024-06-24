@@ -103,8 +103,8 @@ const postSchema = new mongoose.Schema({
     maxlengh: 125,
     required: true,
   },
-  date: {
-    type: Date,
+  createAt: {
+    type: String,
   },
   title: {
     type: String,
@@ -114,6 +114,10 @@ const postSchema = new mongoose.Schema({
   },
   image: {
     type: String,
+  },
+  status: {
+    type: String,
+    enum: ['active', 'hide'],
   },
 });
 const eventSchema = new mongoose.Schema({

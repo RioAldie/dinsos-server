@@ -13,7 +13,6 @@ const add = async (request) => {
   const event = validate(createEventValidation, request);
 
   event.createAt = new Date().toISOString();
-  event.status = 'Dalam Tinjauan';
 
   const newEvent = await Event(event);
 
