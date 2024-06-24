@@ -1,3 +1,3 @@
-import { web } from '../src/config/web';
+import { web } from '../src/config/web.js';
 
 export default web;
