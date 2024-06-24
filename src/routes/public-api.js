@@ -5,6 +5,10 @@ import eventController from '../controller/event-controller.js';
 import postController from '../controller/post-controller.js';
 
 const publicRouter = new express.Router();
+
+publicRouter.get('/', (req, res) => {
+  res.status(200).json({ message: 'Dinsos Server' });
+});
 publicRouter.post('/api/auth', userController.register);
 publicRouter.post('/api/auth/login', userController.login);
 publicRouter.get('/api/users', userController.getAll);
