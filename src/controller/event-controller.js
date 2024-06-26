@@ -18,6 +18,15 @@ const edit = async (req, res, next) => {
     next(error);
   }
 };
+const editStatus = async (req, res, next) => {
+  try {
+    const result = await eventService.editStatus(req.body);
+
+    res.status(200).json({ data: result });
+  } catch (error) {
+    next(error);
+  }
+};
 const remove = async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -51,4 +60,4 @@ const get = async (req, res, next) => {
   }
 };
 
-export default { add, edit, remove, getAll, get };
+export default { add, edit, remove, getAll, get, editStatus };

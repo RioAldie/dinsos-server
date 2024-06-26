@@ -115,10 +115,6 @@ const postSchema = new mongoose.Schema({
   image: {
     type: String,
   },
-  status: {
-    type: String,
-    enum: ['active', 'hide'],
-  },
 });
 const eventSchema = new mongoose.Schema({
   title: {
@@ -139,6 +135,9 @@ const eventSchema = new mongoose.Schema({
     type: String,
   },
   audience: {
+    type: String,
+  },
+  status: {
     type: String,
   },
 });

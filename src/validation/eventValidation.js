@@ -16,6 +16,11 @@ const editEventValidation = Joi.object({
   time: Joi.string().optional(),
   detail: Joi.string().optional(),
   audience: Joi.string().optional(),
+  status: Joi.string().optional(),
+});
+const editStatusValidation = Joi.object({
+  _id: Joi.string().required(),
+  status: Joi.string().required(),
 });
 
 const deleteEventValidation = Joi.string().max(100).required();
@@ -25,4 +30,5 @@ export {
   getEventValidation,
   deleteEventValidation,
   editEventValidation,
+  editStatusValidation,
 };

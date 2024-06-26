@@ -21,6 +21,7 @@ publicRouter.get('/api/report/:id', reportController.get);
 // EVENT
 publicRouter.post('/api/event', eventController.add);
 publicRouter.put('/api/event/edit', eventController.edit);
+publicRouter.put('/api/event/status', eventController.editStatus);
 publicRouter.delete('/api/event/:id', eventController.remove);
 publicRouter.get('/api/events', eventController.getAll);
 publicRouter.get('/api/event/:id', eventController.get);

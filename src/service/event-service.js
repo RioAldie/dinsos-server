@@ -4,6 +4,7 @@ import {
   createEventValidation,
   deleteEventValidation,
   editEventValidation,
+  editStatusValidation,
   getEventValidation,
 } from '../validation/eventValidation.js';
 
@@ -12,7 +13,7 @@ import { validate } from '../validation/validation.js';
 const add = async (request) => {
   const event = validate(createEventValidation, request);
 
-  event.createAt = new Date().toISOString();
+  event.status = 'active';
 
   const newEvent = await Event(event);
 
@@ -50,6 +51,23 @@ const edit = async (request) => {
 
   return event;
 };
+const editStatus = async (request) => {
+  const eventRequest = validate(editStatusValidation, request);
+
+  const event = await Event.findOne({
+    _id: eventRequest._id,
+  });
+
+  if (!event) {
+    throw new ResponseError(401, 'username or password wrong');
+  }
+
+  event.status = eventRequest.status;
+
+  await event.save();
+
+  return event;
+};
 
 const remove = async (id) => {
   id = validate(deleteEventValidation, id);
@@ -76,4 +94,4 @@ const get = async (id) => {
   return event;
 };
 
-export default { add, edit, remove, getAll, get };
+export default { add, edit, remove, getAll, get, editStatus };
