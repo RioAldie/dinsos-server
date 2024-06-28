@@ -64,6 +64,10 @@ const reportSchema = new mongoose.Schema({
     type: Number,
     maxlengh: 2,
   },
+  suspectAge: {
+    type: Number,
+    maxlengh: 2,
+  },
   address: {
     type: String,
     maxlengh: 155,
@@ -94,6 +98,9 @@ const reportSchema = new mongoose.Schema({
     type: String,
   },
   email: {
+    type: String,
+  },
+  phone: {
     type: String,
   },
 });

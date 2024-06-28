@@ -13,6 +13,7 @@ const createReportValidation = Joi.object({
   name: Joi.string().optional(),
   suspectName: Joi.string().optional(),
   age: Joi.string().optional(),
+  suspectAge: Joi.string().optional(),
 });
 const editStatusReportValidation = Joi.object({
   _id: Joi.string().required(),
